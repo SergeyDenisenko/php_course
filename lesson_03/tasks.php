@@ -57,9 +57,9 @@ echo $str;
 
 // exercise 4
 
-function transliteration($string, $method = 'GOST')
+function transliteration($string, $method = '')
 {
-    $method_default = 'GOST';
+    $method_default = 'ISO';
     $map = [
         // ГОСТ 7.79-2000
         'GOST' => [
@@ -152,3 +152,29 @@ echo lineEdit('Hello World!') . BR;
 // exercise 7
 
 for ($i = 0; $i < 10; print $i++){};
+
+// exercise 8
+
+$str = '';
+$tmp = '';
+$strArray = [];
+
+foreach ($city as $key => $value) {
+    $str .= $key . ':' . BR;
+    $countCity = count($city[$key]);
+    for ($i = 0, $c = 1; $i < $countCity; $i++, $c++) {
+        $tmp = $city[$key][$i];
+        if (mb_substr($tmp, 0, 1) == 'К') {
+            $strArray[] = $tmp;
+        };
+        if ($c === $countCity) {
+            $str .= implode(', ', $strArray);
+            $str .= '.' . BR . BR;
+            $strArray = [];
+        }
+    }
+}
+
+echo $str;
+
+// exercise 9
